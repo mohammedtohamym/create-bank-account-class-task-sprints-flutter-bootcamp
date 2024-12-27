@@ -3,7 +3,9 @@ class BankAccount {
   int? _balance;
 
   // Main constructor to initialize the BankAccount with ID
-  BankAccount(String _accountId);
+  BankAccount(String accountId){
+    _accountId = accountId;
+  }
   // Named constructor to initialize the BankAccount with account ID and balance set to 0
   BankAccount.setBalance(String accountId) {
     _accountId = accountId;
@@ -23,8 +25,8 @@ class BankAccount {
     _balance = balance;
   }
 
-  // Method to withdraw an ammount of money from the balance 
-  // but only if the the right conditions are met
+  /* Method to withdraw an ammount of money from the balance 
+   but only if the the right conditions are met */
   void withdraw(int amount) {
     // ensure the balance is initialized
     if (_balance == null){
@@ -39,6 +41,7 @@ class BankAccount {
     // ensure the balance is sufficient to cover the withdrawal
     if (_balance! > amount) {
       _balance = _balance! - amount;
+      print('Withdrawal successful with amount of $amount');
     } else { 
       print('Insufficient funds');
     }
@@ -53,6 +56,7 @@ class BankAccount {
     }
     // update the balance
     _balance = (_balance?? 0) + amount;
+    print('Deposit successful with amount of $amount');
   }
 
   // Method to display information about the account
